@@ -28,6 +28,7 @@ server.get("/", (req, res) => {
         <div>Hello!</div>
         <div>Welcome to Elixr Labs React Training API.</div>
         <div>V1.0.1</div>
+        <div>${appRoot}</div>
     </div>`);
 });
 
