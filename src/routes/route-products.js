@@ -47,8 +47,7 @@ RouteProducts.get("/list", (req, res) => {
 RouteProducts.post("/add", (req, res) => {
     validateTokenThen(req, res, ({ type = null }) => {
         if (type === USER_TYPES.ADMIN) {
-            const { name, details, image, imageName, count, rating, status } =
-                JSON.parse(req?.body);
+            const { name, details, image, imageName, count, rating, status } = req?.body;
             const filename = path.join(
                 `${appRoot}/assets/uploads/products`,
                 imageName
@@ -107,39 +106,33 @@ RouteProducts.post("/edit", (req, res) => {
                 req.body;
             ProductModel.findOne({ guid }).then((foundGuid) => {
                 if (foundGuid) {
-                    ProductModel.findOne({ name }).then((foundName) => {
-                        if (foundName) {
-                            response403(res, `Product name already exists!`);
-                        } else {
-                            ProductModel.updateOne(
-                                { guid },
-                                {
-                                    $set: {
-                                        name,
-                                        details,
-                                        image,
-                                        count,
-                                        rating,
-                                        status,
-                                    },
-                                }
-                            ).then((document) => {
-                                if (document) {
-                                    response200(res, `Product updated`, {
-                                        data: {
-                                            guid,
-                                            name,
-                                            details,
-                                            image,
-                                            count,
-                                            rating,
-                                            status,
-                                        },
-                                    });
-                                } else {
-                                    response403(res, `Product not updated!`);
-                                }
+                    ProductModel.updateOne(
+                        { guid },
+                        {
+                            $set: {
+                                name,
+                                details,
+                                image,
+                                count,
+                                rating,
+                                status,
+                            },
+                        }
+                    ).then((document) => {
+                        if (document) {
+                            response200(res, `Product updated`, {
+                                data: {
+                                    guid,
+                                    name,
+                                    details,
+                                    image,
+                                    count,
+                                    rating,
+                                    status,
+                                },
                             });
+                        } else {
+                            response403(res, `Product not updated!`);
                         }
                     });
                 } else {

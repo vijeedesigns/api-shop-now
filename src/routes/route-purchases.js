@@ -13,12 +13,9 @@ RoutePurchases.get("/list", (req, res) => {
         if (userId) {
             PurchaseModel.aggregate([
                 {
-                    $match:
-                        type === USER_TYPES.ADMIN
-                            ? {}
-                            : {
-                                  userId,
-                              },
+                    $match: {
+                        userId,
+                    },
                 },
                 {
                     $lookup: {
