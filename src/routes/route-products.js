@@ -49,16 +49,16 @@ RouteProducts.post("/add", (req, res) => {
         if (type === USER_TYPES.ADMIN) {
             const { name, details, image, imageName, count, rating, status } = req?.body;
             const filename = path.join(
-                `${appRoot}/assets/uploads/products`,
+                `https://vijee.in/repositories/api-shop-now/assets/uploads/products`,
                 imageName
             );
-            // fs.writeFileSync(
-            //     filename,
-            //     new Buffer.from(
-            //         image?.replace(/^data:image\/\w+;base64,/, ""),
-            //         "base64"
-            //     )
-            // );
+            fs.writeFileSync(
+                filename,
+                new Buffer.from(
+                    image?.replace(/^data:image\/\w+;base64,/, ""),
+                    "base64"
+                )
+            );
 
             const guid = generateGuid();
             ProductModel.findOne({ name }).then((found) => {
