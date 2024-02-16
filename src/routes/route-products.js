@@ -84,6 +84,7 @@ RouteProducts.post("/add", (req, res) => {
                                     count,
                                     rating,
                                     status,
+                                    filename
                                 },
                             });
                         } else {
