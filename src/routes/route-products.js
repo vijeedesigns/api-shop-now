@@ -49,7 +49,7 @@ RouteProducts.post("/add", (req, res) => {
         if (type === USER_TYPES.ADMIN) {
             const { name, details, image, imageName, count, rating, status } = req?.body;
             const filename = path.join(
-                `https://vijee.in/repositories/api-shop-now/assets/uploads/products`,
+                `../../assets/uploads/products`,
                 imageName
             );
             fs.writeFileSync(
