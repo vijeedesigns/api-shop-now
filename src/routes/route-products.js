@@ -85,8 +85,6 @@ RouteProducts.post("/add", (req, res) => {
                                     count,
                                     rating,
                                     status,
-                                    filename,
-                                    dirname: __dirname
                                 },
                             });
                         } else {
