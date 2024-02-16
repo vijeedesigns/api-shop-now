@@ -4,8 +4,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 
-// global.appRoot = path.resolve(__dirname);
-global.appRoot = `https://info-shop-now.vijee.in`;
+global.appRoot = path.resolve(__dirname);
+// global.appRoot = `https://info-shop-now.vijee.in`;
 
 const server = express();
 
