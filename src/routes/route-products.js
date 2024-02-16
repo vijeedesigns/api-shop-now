@@ -52,13 +52,13 @@ RouteProducts.post("/add", (req, res) => {
                 `${appRoot}/assets/uploads/products`,
                 imageName
             );
-            fs.writeFileSync(
-                filename,
-                new Buffer.from(
-                    image?.replace(/^data:image\/\w+;base64,/, ""),
-                    "base64"
-                )
-            );
+            // fs.writeFileSync(
+            //     filename,
+            //     new Buffer.from(
+            //         image?.replace(/^data:image\/\w+;base64,/, ""),
+            //         "base64"
+            //     )
+            // );
 
             const guid = generateGuid();
             ProductModel.findOne({ name }).then((found) => {
